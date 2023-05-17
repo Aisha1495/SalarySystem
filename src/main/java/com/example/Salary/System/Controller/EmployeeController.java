@@ -4,6 +4,7 @@ package com.example.Salary.System.Controller;
 
 import com.example.Salary.System.Models.Employee;
 import com.example.Salary.System.RequestObjects.GetEmployeeRequestObject;
+import com.example.Salary.System.ResponseOpjects.GetEmployeeResponse;
 import com.example.Salary.System.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class EmployeeController {
 
     //Path Variable
     @RequestMapping("employee/get/{employeeId}")
-    public Long createEmployee (@PathVariable Long employeeId) {
+    public GetEmployeeResponse createEmployee (@PathVariable Long employeeId) {
         return employeeService.getEmployeeById(employeeId);
     }
 

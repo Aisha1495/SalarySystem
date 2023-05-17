@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+//@Controller
 @RestController
 public class SalaryController {
 
@@ -20,19 +20,22 @@ public class SalaryController {
     SalaryService salaryService;
 
 
-    @RequestMapping("account/create")
+    @RequestMapping("salary/create")
     public void saveSalary () {
         createSalary();
     }
 
-    @RequestMapping ("account/get")
+    @RequestMapping ("salary/get")
     public List<Salary> getSalary(){
         return SalaryService.getSalary();
     }
 
     private void createSalary() {
-
-
+        Salary salary = new Salary();
+        salary.setId(12234L);
+        salary.setAmount(100.215);
+        salary.setOverTimeAmount(1.255);
+        salaryService.saveSalary(salary);
     }
 
 }

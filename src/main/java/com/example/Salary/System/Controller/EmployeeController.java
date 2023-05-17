@@ -3,11 +3,10 @@ package com.example.Salary.System.Controller;
 
 
 import com.example.Salary.System.Models.Employee;
+import com.example.Salary.System.RequestObjects.GetEmployeeRequestObject;
 import com.example.Salary.System.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
@@ -19,16 +18,22 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @RequestMapping("employee/create")
-    public void saveEmployee () {
-        createEmployee();
+    public void saveEmployee (@RequestBody GetEmployeeRequestObject employeeRequestObject) {
+        createEmployee(employeeRequestObject);
     }
 
-    @RequestMapping ("employee/get")
-    public List<Employee> getEmployees(){
+    @RequestMapping("employee/get")
+    public List<Employee> getEmployees () {
         return employeeService.getEmployees();
     }
 
-    public void createEmployee() {
+    //Path Variable
+    @RequestMapping("employee/get/{employeeId}")
+    public Long createEmployee (@PathVariable Long employeeId) {
+        return employeeService.getEmployeeById(employeeId);
+    }
+
+    public void createEmployee(GetEmployeeRequestObject employeeRequestObject) {
 
         Employee employee = new Employee();
         employee.setName("Aisha");

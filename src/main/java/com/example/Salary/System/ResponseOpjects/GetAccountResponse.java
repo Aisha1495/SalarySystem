@@ -9,13 +9,13 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetEmployeeResponse {
-
-    String name;
-    String Gender;
-    String Branch;
+public class GetAccountResponse {
     String BankName;
+    String AccountType;
+    Double AccountNumber;
+    String BankBranch;
 
-    public GetEmployeeResponse(String name, String gender, String department, Double salary) {
+
+    public GetAccountResponse(String accountType, String accountNumber, String bankBranch, String bankName) {
     }
 }

@@ -25,7 +25,7 @@ public class EmployeeService {
     }
 
     public GetEmployeeResponse getEmployeeById(Long employeeId) {
-        Optional<Employee> optionalEmployee =  employeeRepository.findById(employeeId);
+            Optional<Employee> optionalEmployee =  employeeRepository.findById(employeeId);
         if(!optionalEmployee.isEmpty())
         {
             Employee employee =  optionalEmployee.get();
@@ -36,4 +36,7 @@ public class EmployeeService {
         return null;
 
     }
-}
+
+    public void deleteEmployee (Long employeeId) {
+    employeeRepository.deleteById(employeeId);
+}}

@@ -2,12 +2,10 @@ package com.example.Salary.System.Controller;
 
 
 import com.example.Salary.System.Models.Account;
-import com.example.Salary.System.Models.Employee;
 import com.example.Salary.System.Repository.AccountRepository;
-import com.example.Salary.System.Repository.EmployeeRepository;
 import com.example.Salary.System.Service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +26,13 @@ public class AccountController {
 
     @RequestMapping ("account/get")
     public List<Account> getAccount(){
-        return AccountService.getAccount();
+        Long accountId = null;
+        return AccountService.getAccount(null);
+    }
+
+    @RequestMapping("account/get/{salaryId}")
+    public List<Account> createAccount (@PathVariable Long accountId) {
+        return AccountService.getAccount(accountId);
     }
 
     private void createAccount() {

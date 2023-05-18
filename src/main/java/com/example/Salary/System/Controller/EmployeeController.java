@@ -34,6 +34,11 @@ public class EmployeeController {
         return employeeService.getEmployeeById(employeeId);
     }
 
+    @RequestMapping("employee/delete/{employeeId}")
+    public void deleteEmployee (@PathVariable Long employeeId) {
+        employeeService.deleteEmployee(employeeId);
+    }
+
     public void createEmployee(GetEmployeeRequestObject employeeRequestObject) {
 
         Employee employee = new Employee();

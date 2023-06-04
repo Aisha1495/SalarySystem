@@ -18,11 +18,15 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
+
+    //create
     @RequestMapping("employee/create")
     public void saveEmployee (@RequestBody GetEmployeeRequestObject employeeRequestObject) {
         createEmployee(employeeRequestObject);
     }
 
+
+    //get
     @RequestMapping("employee/get")
     public List<Employee> getEmployees () {
         return employeeService.getEmployees();
@@ -34,6 +38,8 @@ public class EmployeeController {
         return employeeService.getEmployeeById(employeeId);
     }
 
+
+    //delete
     @RequestMapping("employee/delete/{employeeId}")
     public void deleteEmployee (@PathVariable Long employeeId) {
         employeeService.deleteEmployee(employeeId);

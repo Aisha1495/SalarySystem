@@ -2,12 +2,11 @@ package com.example.Salary.System.Controller;
 
 
 import com.example.Salary.System.Models.Account;
+import com.example.Salary.System.Models.Manager;
 import com.example.Salary.System.Repository.AccountRepository;
 import com.example.Salary.System.Service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +16,7 @@ public class AccountController {
 
     @Autowired
     AccountRepository accountRepository;
-
+AccountService accountService;
 
     @RequestMapping("account/create")
     public void saveAccount () {
@@ -50,5 +49,8 @@ public class AccountController {
 
     }
 
-
+    @RequestMapping(value = "findAccountByAccountNumber", method = RequestMethod.GET)
+    public Manager getAccountByAccountNumber(@RequestParam Integer accountNumber){
+        return accountService.getAccountByAccountNumber(accountNumber);
+    }
 }

@@ -1,10 +1,9 @@
 package com.example.Salary.System.Service;
 
 import com.example.Salary.System.Models.Account;
-import com.example.Salary.System.Models.Employee;
+import com.example.Salary.System.Models.Manager;
 import com.example.Salary.System.Repository.AccountRepository;
 import com.example.Salary.System.ResponseOpjects.GetAccountResponse;
-import com.example.Salary.System.ResponseOpjects.GetEmployeeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +34,8 @@ public class AccountService {
 
         return null;
 
+    }
+    public Manager getAccountByAccountNumber(Integer accountNumber){
+        return accountRepository.getAccountByAccountNumber(accountNumber);
     }
 }
